@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>로그인</title>
     <style>
       *{
         box-sizing: border-box;
@@ -13,7 +12,7 @@
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
       body{
-        background-color: rgb(216, 220, 252);
+        background-color: rgb(255, 255, 255);
       }
       .container{
         display: flex;
@@ -22,33 +21,92 @@
         height: 100vh;
       }
       form{
-        background-color: whi;
-        border: 2px solid white;
-        padding: 3rem;
-        box-shadow: 0 0 10px white;
+        border: 2px solid rgb(177, 177, 177);
+        padding: 3rem 4rem;
+        box-shadow: 0 0 10px rgb(202, 202, 202);
       }
       label{
         display: block;
-        margin-bottom: 10px;
-        font-size: 16px;
+        font-size: 14px;
       }
-      button{
-        margin-top: 10px;
+
+      button[type="submit"] {
+        transition: background-color 2s;
+        background-color: #ffffff;
+        color: #0069d9;
+        height: 40px;
         font-size: 12px;
+        font-weight: bold;
+        border-radius: 2px;
+        border: none;
+        cursor: pointer;
+        margin-top: 5px;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
       }
-    </style>
+      button:hover{
+        color: white;
+        background-color: blue;
+        border-radius: 4px;
+      }
+      .button{
+        display: flex;
+        justify-content: center;
+      }
+      h2{
+        text-align: center;
+      }
+
+      input[type="text"], input[type="password"]{
+        background-color: white;
+        border: 1px solid black;
+        border-radius: 8px ;
+        display: block;
+        margin-top: 10px;
+      }
+
+      @keyframes shake{
+        0%, 100%{
+          transform: translateX(0);
+        }
+        10%, 30%, 50%, 70%, 90%{
+          transform: translateX(-20px);
+        }
+        20%, 40%, 60%, 80%{
+          transform: translateX(20px);
+        }
+      }
+
+      .shake-text {
+        animation: shake 1s linear;
+      }
+      </style>
+      <title>로그인</title>
   </head>
   <body>
-    <div class="container">
-      
+    <div class="container">  
       <form>
-        <label for="username"> 아 이 디 &nbsp;</label>
+         <h2 class="title">로그인</h2><br>
+        <!-- <label for="username"> 아 이 디</label> -->
         <!-- required = 필수입력 칸 입력요청 -->
-        <input type="text" id="username" name="username" required />
-        <br><label for="password">비밀번호</label>
-        <input type="password" id="password" name="password" required />
-        <br><button>로그인</button>
+        <input type="text" id="username" name="username" placeholder=" 아이디" required />
+        <!-- <br><label for="password">비밀번호</label> -->
+        <input type="password" id="password" name="password" placeholder=" 비밀번호" required />
+        <br>
+        <div class="button">
+          <button id="reqLogin" type="submit">>>>></button>
+        </div>
     </form>
     </div>
   </body>
+  <script>
+    const reqLogin = document.querySelector("#reqLogin"); //querySelector 하나를 가져옴
+    reqLogin.addEventListener("click", ()=>{
+      document.querySelectorAll(".title")[0].classList.add("shake-text"); //class .title 이름의 여러개를 가져옴
+    //[0] 첫번쨰를 가져옴
+
+    setTimeout(() => {
+      document.querySelectorAll(".title")[0].classList.remove("shake-text")
+    }, 1000);
+    });
+  </script>
 </html>
